@@ -1,0 +1,11 @@
+@media (hover: none) and (pointer: coarse){
+    .cursor {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1400px){
+    .box {
+        display: none;
+    }
+}

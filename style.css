@@ -25,7 +25,8 @@ body {
 }
 
 .loading-page {
-    position: absolute;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
     background: linear-gradient(to right, #EEEBE6, #cf676f, #C6404C);
@@ -36,6 +37,7 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: 1.5rem;
+    pointer-events: none;
 }
 
 .loading-page::before{
@@ -84,8 +86,9 @@ body {
 
 .landing-page {
     background-image: url("resources/img/perlin.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #C6404C;
-    font-size: 96px;
     height: 100vh;
     width: 100%;
     display: flex;
@@ -98,6 +101,11 @@ body {
     user-select: none;
 }
 
+.landing-page p {
+    text-align: center;
+    font-size: clamp(48px, 8vw, 120px);
+}
+
 .landing-page::before{
     content: "";
     position: absolute;
@@ -107,18 +115,25 @@ body {
     height: 125px;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-y: bottom;
+    background-position-x: right;
     background-image: url("resources/img/waves.svg");
 }
 
 .landing-page::after {
     content: "";
     position: absolute;
+    z-index: 999;
     bottom: -100px;
-    right: 100px;
-    height: 500px;
-    width: 300px;
+    right: 0px;
+    height: clamp(300px, 50vh, 600px); /* Minimum 400px, preferred 50% of viewport height, maximum 600px */
+    width: clamp(150px, 30vw, 400px);  /* Minimum 250px, preferred 30% of viewport width, maximum 400px */
+
+
+
     background-repeat: no-repeat;
-    
+    background-position: center;
+    background-size: contain;
     background-image: url("resources/img/man1.svg");
 }
 
@@ -132,7 +147,7 @@ body {
     top: 0;
     left: 0;
     color: #fff;
-    z-index: 1000;
+    z-index: 999;
 }
 
 .landing-page nav h1{
@@ -181,12 +196,12 @@ body {
 
 .box .eye {
     position: relative;
-    width: 80px; /* Adjusted size */
-    height: 80px; /* Adjusted size */
+    width: clamp(40px, 5vw, 100px); /* Adjusted size */
+    height: clamp(40px, 5vw, 100px); /* Adjusted size */
     display: block;
     background: transparent;
-    border: .5px solid #00000050;
-    margin: 0px 20px;
+    border: .1vw solid #00000050;
+    margin: 0px 1vw;
     border-radius: 50%;
 
     overflow: hidden;
@@ -197,12 +212,93 @@ body {
     position: absolute;
     top: calc(50% + var(--pupil-y, 0px));
     left: calc(50% + var(--pupil-x, 0px));
-    width: 15px; /* Adjusted pupil size */
-    height: 15px; /* Adjusted pupil size */
+    width: clamp(10px, 1vw, 20px); /* Adjusted pupil size */
+    height: clamp(10px, 1vw, 20px); /* Adjusted pupil size */
     background: #000;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     border: solid 1px rgb(255, 255, 255); /* Adjusted border size */
-    outline: solid 10px #C6404C;
+    outline: solid clamp(5px, .5vw, 10px) #C6404C;
     box-sizing: border-box;
+}
+
+.links {
+    position: absolute;
+    z-index: 999;
+    bottom: 10vh;
+    left: 5vw;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.links p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.link-images{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #C6404C;
+    padding: 3px 5px;
+    border-radius: 25px;
+}
+
+.link-images a {
+    height: 15px;
+    width: 15px;;
+}
+
+.link-images img {
+    height: 15px;
+    width: 15px;
+}
+
+
+
+
+
+
+
+.websites {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 10%;
+    height: 100vh;
+    width: 100vw;
+    background-color: #EEEBE6;
+}
+
+.one-web {
+    position: relative;
+    aspect-ratio: 16/9;
+    width: 800px;
+    height: 450px;
+    height: fit-content;
+}
+
+.one-web img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.new {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background-color: #C6404C;
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-family: "Poppins";
+    color: #fff;
+    font-size: 20px;
+    font-weight: 800;
 }
