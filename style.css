@@ -7,9 +7,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-    height: 300vh;
     cursor: cell;
     background-color: #EEEBE6;
+    overflow-x: hidden;
+}
+
+.cursor{
+    pointer-events: none;
 }
 
 .circle {
@@ -20,7 +24,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 1;
     pointer-events: none;
 }
 
@@ -48,6 +52,8 @@ body {
     height: 100%;
     width: 100%;
     background-image: url("resources/img/perlin.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 @keyframes draw {
@@ -268,8 +274,10 @@ body {
     position: relative;
     display: flex;
     flex-direction: row;
-    padding: 10%;
-    height: 100vh;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 5%;
     width: 100vw;
     background-color: #EEEBE6;
 }
@@ -277,9 +285,15 @@ body {
 .one-web {
     position: relative;
     aspect-ratio: 16/9;
-    width: 800px;
-    height: 450px;
+    width: 40vw;
+    display: inline;
     height: fit-content;
+    transition: all linear .25s;
+}
+
+.one-web:hover{
+    cursor: pointer;
+    scale: 1.025;
 }
 
 .one-web img {
@@ -291,8 +305,8 @@ body {
 
 .new {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 10px;
+    left: 10px;
     transform: translate(-50%, -50%) rotate(-45deg);
     background-color: #C6404C;
     padding: 3px 5px;
@@ -301,4 +315,144 @@ body {
     color: #fff;
     font-size: 20px;
     font-weight: 800;
+}
+
+.projects {
+    position: relative;
+    width: 100vw;
+    height: 50vh;
+    background-image: url("resources/img/perlin.svg");
+    background: linear-gradient(-45deg,#cf676f,#e4cdcb);
+    background-repeat: no-repeat;
+    background-size: 300% 300%;
+    animation: background-projects 10s ease infinite;
+    border-bottom: 15px solid #C6404C;
+    overflow-y: hidden;
+}
+
+.projects::before{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: -30px;
+    right: 0px;
+    height: 40vh;
+    width: 40vw;
+
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    background-image: url("resources/img/man2.svg");
+}
+
+.projects::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    height: calc(100% - 80px);
+    width: 100%;
+    z-index: 0;
+    background-image: url("resources/img/perlin.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes background-projects {
+    0% {
+        background-position: 0% 50%;
+    } 50% {
+        background-position: 100% 50%;
+    }100% {
+        background-position: 0% 50%;
+    }
+}
+
+.projects-title {
+    width: 100vw;
+    height: 80px;
+    background-color: #C6404C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.projects-title p {
+    font-family: "Poppins";
+    font-weight: 900;
+    user-select: none;
+    font-size: clamp(36px, 3vw, 72px);
+    color: #fff;
+}
+
+.projectsItems{
+    display: flex;
+    padding-top: 5vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item {
+    width: 80%;
+    background-color: #181414;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0% 20px;
+    color: #fff;
+    font-family: "Poppins";
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.item h1{
+    font-weight: 900;
+    font-size: clamp(16px, 5vw ,48px);
+}
+
+.item p{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: clamp(12px, 2vw , 24px);
+    line-height: 100%;
+}
+
+.item p img {
+    margin-right: 10px;
+}
+
+.item a{
+    text-decoration: none;
+    color: #EEEBE6;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    font-weight: 600;
+    font-size: clamp(8px, 2vw , 24px);
+    padding: 5px;
+    border: 2px solid #fff;
+    z-index: 1;
+    transition: 0.25s linear all;
+}
+
+.item a:hover{
+    background-color: #fff;
+    color: #181414;
+}
+
+.item a svg {
+    height: 24px;
+    margin-right: 10px;
 }

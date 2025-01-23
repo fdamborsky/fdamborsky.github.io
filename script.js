@@ -57,3 +57,22 @@ function animateCircles() {
 }
 
 animateCircles();
+
+document.querySelectorAll(".one-web").forEach( (oneWeb) => {
+  oneWeb.addEventListener("mouseover", () => {
+  const cursor = document.querySelector(".cursor")
+  cursor.style.display = "none"
+  oneWeb.addEventListener("mouseout", () => {
+    cursor.style.display = "block"
+  }) 
+}
+)})
+
+document.querySelector(".websites").addEventListener("mouseover", () => {
+  const cursor = document.querySelector(".cursor")
+  cursor.style.display = "none"
+})
+document.querySelector(".websites").addEventListener("mouseout", () => {
+  const cursor = document.querySelector(".cursor")
+  cursor.style.display = "block"
+})
